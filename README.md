@@ -33,7 +33,18 @@ worker/
 
 - Ubuntu VPS with `bash`, `ping`, `curl` (all pre-installed)
 
-### Setup
+### Install
+
+```bash
+wget https://raw.githubusercontent.com/fazlurr/pingmon/main/pingmon.sh
+chmod +x pingmon.sh
+
+# Also grab the .env template
+wget https://raw.githubusercontent.com/fazlurr/pingmon/main/.env.example -O .env
+nano .env   # set REPORT_URL
+```
+
+### Setup (Git Clone)
 
 ```bash
 chmod +x pingmon.sh
