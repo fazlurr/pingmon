@@ -157,7 +157,7 @@ pnpm run db:migrate:remote
 pnpm run deploy
 ```
 
-Your Worker URL will be printed: `https://ping-monitor.YOUR_SUBDOMAIN.workers.dev`
+Your Worker URL will be printed: `https://pingmon.YOUR_SUBDOMAIN.workers.dev`
 
 Set this as `REPORT_URL` in your VPS `.env`.
 
