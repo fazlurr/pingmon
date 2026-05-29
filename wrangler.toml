@@ -1,0 +1,9 @@
+name = "ping-monitor"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ping-monitor-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
