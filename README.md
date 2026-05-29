@@ -1,8 +1,8 @@
-# ping_monitor
+# pingmon
 
 A two-part network monitoring setup:
 
-1. **`ping_monitor.sh`** — Bash script that runs on your Ubuntu VPS, pings `google.com` every 2s, and POSTs a JSON summary to your Cloudflare Worker every minute.
+1. **`pingmon.sh`** — Bash script that runs on your Ubuntu VPS, pings `google.com` every 2s, and POSTs a JSON summary to your Cloudflare Worker every minute.
 2. **`worker/`** — Cloudflare Worker that receives reports, stores them in **D1** (SQLite), and serves a live chart dashboard.
 
 ---
@@ -10,7 +10,7 @@ A two-part network monitoring setup:
 ## Project Structure
 
 ```
-ping_monitor.sh        ← runs on your VPS
+pingmon.sh        ← runs on your VPS
 .env.example           ← copy to .env, fill in REPORT_URL
 worker/
   wrangler.toml        ← Worker config + D1 binding
@@ -36,7 +36,7 @@ worker/
 ### Setup
 
 ```bash
-chmod +x ping_monitor.sh
+chmod +x pingmon.sh
 cp .env.example .env
 nano .env          # set REPORT_URL to your Worker URL
 ```
@@ -57,20 +57,20 @@ WARN_AVG_ABOVE=10
 ### Run
 
 ```bash
-./ping_monitor.sh
+./pingmon.sh
 ```
 
 **Background (persistent):**
 
 ```bash
-nohup ./ping_monitor.sh > ping_monitor.log 2>&1 &
-tail -f ping_monitor.log
+nohup ./pingmon.sh > pingmon.log 2>&1 &
+tail -f pingmon.log
 ```
 
 **Stop:**
 
 ```bash
-pkill -f ping_monitor.sh
+pkill -f pingmon.sh
 ```
 
 **As a systemd service:**
@@ -89,7 +89,7 @@ Type=simple
 User=ubuntu
 WorkingDirectory=/home/ubuntu
 EnvironmentFile=/home/ubuntu/.env
-ExecStart=/home/ubuntu/ping_monitor.sh
+ExecStart=/home/ubuntu/pingmon.sh
 Restart=on-failure
 RestartSec=10
 

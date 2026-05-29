@@ -1,11 +1,11 @@
 #!/bin/bash
 # =============================================================================
-# ping_monitor.sh — Ping Google, summarize every minute, POST to Report URL
+# pingmon.sh — Ping Google, summarize every minute, POST to Report URL
 # =============================================================================
 # Usage:
-#   chmod +x ping_monitor.sh
+#   chmod +x pingmon.sh
 #   cp .env.example .env && nano .env
-#   ./ping_monitor.sh
+#   ./pingmon.sh
 # =============================================================================
 
 # ── Load .env if present ──────────────────────────────────────────────────────
@@ -27,7 +27,7 @@ REPORT_URL="${REPORT_URL:-}"               # Required: Cloudflare Worker URL
 # ── Validate REPORT_URL ───────────────────────────────────────────────────────
 if [[ -z "$REPORT_URL" ]]; then
   echo "[ERROR] REPORT_URL is not set."
-  echo "  Set it in .env or: REPORT_URL=\"https://your-worker.workers.dev\" ./ping_monitor.sh"
+  echo "  Set it in .env or: REPORT_URL=\"https://your-worker.workers.dev\" ./pingmon.sh"
   exit 1
 fi
 
