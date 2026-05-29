@@ -44,7 +44,7 @@ nano .env          # set REPORT_URL to your Worker URL
 **.env**
 
 ```env
-REPORT_URL=https://ping-monitor.YOUR_SUBDOMAIN.workers.dev
+REPORT_URL=https://pingmon.YOUR_SUBDOMAIN.workers.dev
 
 # Optional overrides
 TARGET=google.com
@@ -76,7 +76,7 @@ pkill -f pingmon.sh
 **As a systemd service:**
 
 ```bash
-sudo nano /etc/systemd/system/ping-monitor.service
+sudo nano /etc/systemd/system/pingmon.service
 ```
 
 ```ini
@@ -99,8 +99,8 @@ WantedBy=multi-user.target
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now ping-monitor
-sudo journalctl -u ping-monitor -f
+sudo systemctl enable --now pingmon
+sudo journalctl -u pingmon -f
 ```
 
 ---
@@ -137,7 +137,7 @@ Copy the `database_id` from the output and paste it into `wrangler.toml`:
 ```toml
 [[d1_databases]]
 binding = "DB"
-database_name = "ping-monitor-db"
+database_name = "pingmon-db"
 database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"   # ← paste here
 ```
 
