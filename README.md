@@ -97,10 +97,10 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu
-EnvironmentFile=/home/ubuntu/.env
-ExecStart=/home/ubuntu/pingmon.sh
+User=root
+WorkingDirectory=/root/scripts
+EnvironmentFile=/root/scripts/.env
+ExecStart=/root/scripts/pingmon.sh
 Restart=on-failure
 RestartSec=10
 
@@ -160,6 +160,12 @@ pnpm run db:migrate
 
 # Production (remote D1)
 pnpm run db:migrate:remote
+
+# Clear DB
+pnpm run db:clear
+
+# Clear DB (Remote D1)
+pnpm run db:clear:remote
 ```
 
 ### 5. Deploy
@@ -274,4 +280,12 @@ CREATE TABLE ping_reports (
   alert_reasons    TEXT    NOT NULL DEFAULT '[]',
   created_at       TEXT    NOT NULL
 );
+```
+
+## Queries
+
+### Clear all ping reports
+
+```sql
+DELETE FROM ping_reports;
 ```

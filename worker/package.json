@@ -7,7 +7,9 @@
     "deploy": "wrangler deploy",
     "db:create": "wrangler d1 create pingmon-db",
     "db:migrate": "wrangler d1 execute pingmon-db --file=migrations/0001_init.sql",
-    "db:migrate:remote": "wrangler d1 execute pingmon-db --remote --file=migrations/0001_init.sql"
+    "db:migrate:remote": "wrangler d1 execute pingmon-db --remote --file=migrations/0001_init.sql",
+    "db:clear": "wrangler d1 execute pingmon-db --command='DELETE FROM ping_reports; DELETE FROM sqlite_sequence WHERE name='ping_reports';",
+    "db:clear:remote": "wrangler d1 execute pingmon-db --remote --command='DELETE FROM ping_reports; DELETE FROM sqlite_sequence WHERE name='ping_reports';"
   },
   "devDependencies": {
     "wrangler": "^4.95.0"
