@@ -117,7 +117,7 @@ sudo journalctl -u ping-monitor -f
 
 ```bash
 cd worker
-npm install
+pnpm install
 ```
 
 ### 2. Authenticate Wrangler
@@ -129,7 +129,7 @@ wrangler login
 ### 3. Create the D1 database
 
 ```bash
-npm run db:create
+pnpm run db:create
 ```
 
 Copy the `database_id` from the output and paste it into `wrangler.toml`:
@@ -145,16 +145,16 @@ database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"   # ← paste here
 
 ```bash
 # Local dev
-npm run db:migrate
+pnpm run db:migrate
 
 # Production (remote D1)
-npm run db:migrate:remote
+pnpm run db:migrate:remote
 ```
 
 ### 5. Deploy
 
 ```bash
-npm run deploy
+pnpm run deploy
 ```
 
 Your Worker URL will be printed: `https://ping-monitor.YOUR_SUBDOMAIN.workers.dev`
@@ -164,7 +164,7 @@ Set this as `REPORT_URL` in your VPS `.env`.
 ### 6. Local development
 
 ```bash
-npm run dev
+pnpm run dev
 # Worker runs at http://localhost:8787
 ```
 
